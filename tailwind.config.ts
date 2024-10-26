@@ -13,6 +13,9 @@ const config: Config = {
       'white' : '#FFFFFF',
     },
     extend: {
+      backgroundImage: {
+        'hero-image': "url('/primaryimage.jpeg')"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
