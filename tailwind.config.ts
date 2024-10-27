@@ -10,6 +10,7 @@ const config: Config = {
     colors: {
       'accentRed' : '#9e2a2b',
       'primaryBrown' : '#540b0e',
+      'backgroundYellow' : '#FFF3B0',
       'white' : '#FFFFFF',
       'black' : '#000000',
       'blackaccent1' : '#1e1e1e',
