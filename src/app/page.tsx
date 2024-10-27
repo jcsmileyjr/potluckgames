@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "./layout/Header/Header";
 import AddDish from "./components/AddDish/AddDish";
+import ViewDishes from "./components/ViewDishes/ViewDishes";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <main className="flex flex-col gap-2">
         <AddDish />
+        <ViewDishes />
       </main>
 
     </div>
