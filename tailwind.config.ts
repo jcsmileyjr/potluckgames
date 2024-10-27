@@ -11,6 +11,7 @@ const config: Config = {
       'accentRed' : '#9e2a2b',
       'primaryBrown' : '#540b0e',
       'white' : '#FFFFFF',
+      'black' : '#000000',
     },
     extend: {
       backgroundImage: {
