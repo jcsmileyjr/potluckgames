@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="bg-white h-screen">
       <Header />
-      <main className="flex flex-col gap-2">
+      <main className="flex flex-col gap-2 bg-white">
         <AddDish />
         <ViewDishes />
       </main>
