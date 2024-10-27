@@ -12,6 +12,9 @@ const config: Config = {
       'primaryBrown' : '#540b0e',
       'white' : '#FFFFFF',
       'black' : '#000000',
+      'blackaccent1' : '#1e1e1e',
+      'blackaccent2' : '#4a4a4a',
+      'blackaccent3' : '#2c2c2c', 
     },
     extend: {
       backgroundImage: {
