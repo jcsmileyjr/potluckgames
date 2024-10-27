@@ -12,7 +12,7 @@ const Selection = ({type}: {type: string}) => {
 
 export default function DishTypeSelection() {
     return (
-        <div>
+        <div className="">
             <p className="text-primaryBrown font-bold">Dish Type</p>
             <div className="flex flex-row flex-wrap gap-4 text-primaryBrown">
                 <Selection type="Meat" />
