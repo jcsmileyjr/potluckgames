@@ -2,6 +2,7 @@ import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
 const UserSummaries: UserSummary[] = [
     {
+        userID: 1,
         userName: "John Doe",
         userEmail: "8VHs8@example.com",
         dishType: "Meat",
@@ -9,6 +10,7 @@ const UserSummaries: UserSummary[] = [
         dishdescription: "Slow cooked rotisserie  turkey with buttery, savory, melt-in-your-mouth stuffing"
     },
     {
+        userID: 2,
         userName: "Jane Doe",
         userEmail: "8VHs8@example.com",
         dishType: "Bread",
@@ -26,7 +28,7 @@ export default function ViewDishes() {
                 <div className="flex flex-col gap-4 mt-2">
                     {
                         UserSummaries.map((userSummary) => {
-                            return <FoodToggle details={userSummary}/>
+                            return <FoodToggle key={userSummary.userID} details={userSummary}/>
                         })
                     }                
                 </div>
