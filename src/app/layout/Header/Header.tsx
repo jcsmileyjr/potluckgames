@@ -26,14 +26,14 @@ export default function Header() {
                     </>
                   </div>
                   <div className="mt-4 flex flex-col gap-3 text-black">
-                    <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-sm">Meetup.com Registration</button>
+                    <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-md">Meetup.com Registration</button>
                   </div>
                 </div>
                 <div className="w-2/3 2xl:w-1/2 inset-0 aspect-square bg-no-repeat  bg-cover bg-center bg-[url('/primaryimage.jpeg')]"></div>
             </div>
           </div>
           <div className="sm:hidden mt-4 flex flex-col gap-3 text-black">
-              <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-sm">Meetup.com Registration</button>
+              <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-md">Meetup.com Registration</button>
           </div>
         </header>
     );
