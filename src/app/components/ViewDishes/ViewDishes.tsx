@@ -19,15 +19,18 @@ const UserSummaries: UserSummary[] = [
 
 export default function ViewDishes() {
     return (
-        <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:w-1/2 lg:mx-auto">
-            <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">We going Whole Hog tonight</h2>
-            <p className="text-blackaccent1"> I reckon we’ll have ourselves a fine spread, so let’s read what’s on the menu!</p>
-            <div className="flex flex-col gap-4 mt-2">
-                {
-                    UserSummaries.map((userSummary) => {
-                        return <FoodToggle details={userSummary}/>
-                    })
-                }                
+        <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange ">
+            <div className="lg:w-1/2 lg:mx-auto">
+                <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">We going Whole Hog tonight</h2>
+                <p className="text-blackaccent1"> I reckon we’ll have ourselves a fine spread, so let’s read what’s on the menu!</p>
+                <div className="flex flex-col gap-4 mt-2">
+                    {
+                        UserSummaries.map((userSummary) => {
+                            return <FoodToggle details={userSummary}/>
+                        })
+                    }                
+                </div>
+
             </div>
         </section>
     )

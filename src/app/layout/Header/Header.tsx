@@ -16,7 +16,7 @@ export default function Header() {
           {/* Desktop View */}
           <div className="hidden sm:flex sm:flex-col sm:gap-4">
             <h1 className="text-accentRed font-bold text-center text-4xl py-2 mt-8">Potluck & Games</h1>
-            <div className="sm:flex sm:flex-row sm:gap-4 w-2/3 2xl:w-1/2 mx-auto">
+            <div className="sm:flex sm:flex-row sm:gap-4 lg:w-1/2 mx-auto">
                 <div className="flex flex-col gap-1 text-black justify-between">
                   <div>
                     <p className="text-xl mb-4">End of the year Celebration Meal with fellow Tech Professionals</p>
