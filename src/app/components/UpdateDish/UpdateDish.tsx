@@ -4,7 +4,7 @@ import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
 
 export default function UpdateDish() {
     return (
-        <section className="flex-1 px-4 bg-backgroundYellow">
+        <section className="flex-1 px-4 bg-backgroundYellow lg:w-1/2 lg:mx-auto">
             <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">Potluck Flexibility and Understanding</h2>
             <p className="text-blackaccent1"> Oh, honey, we completely understand if you need to switch up what you're bringing—or if plans change and you can't make it. </p>
 

@@ -1,7 +1,7 @@
 
 export default function Header() {
     return (
-        <header className="relative px-4 pb-8 border-b border-primaryBrown border-solid" >
+        <header className="relative px-4 pb-8" >
           {/* Mobile View */}
           <div className="sm:hidden h-80 w-full absolute inset-0 opacity-50 aspect-square bg-no-repeat  bg-cover bg-center bg-[url('/primaryimage.jpeg')] "></div>
           <div className="sm:hidden h-80 relative z-10 flex flex-col">
