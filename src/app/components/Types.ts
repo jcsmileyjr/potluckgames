@@ -1,5 +1,6 @@
 
 export interface UserSummary {
+    userID: number;
     userName: string;
     userEmail: string;
     dishType: string;
