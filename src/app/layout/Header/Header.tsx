@@ -17,12 +17,12 @@ export default function Header() {
           <div className="hidden sm:flex sm:flex-col sm:gap-4">
             <h1 className="text-accentRed font-bold text-center text-4xl py-2 mt-8">Potluck & Games</h1>
             <div className="sm:flex sm:flex-row sm:gap-4 lg:w-1/2 mx-auto">
-                <div className="flex flex-col gap-1 text-black justify-between">
+                <div className="flex flex-col gap-1 justify-between">
                   <div>
-                    <p className="text-xl mb-4">End of the year Celebration Meal with fellow Tech Professionals</p>
+                    <p className="text-xl mb-4 text-primaryBrown font-bold">End of the year Celebration Meal with fellow Tech Professionals</p>
                     <>
-                      <p className="text-base">FedEx Institute of Technology @ The University of Memphis</p>
-                      <p className="text-base">Nov. 22nd @ 6pm</p> 
+                      <p className="text-base text-black">FedEx Institute of Technology @ The University of Memphis</p>
+                      <p className="text-base text-black">Nov. 22nd @ 6pm</p> 
                     </>
                   </div>
                   <div className="mt-4 flex flex-col gap-3 text-black">
