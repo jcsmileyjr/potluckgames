@@ -9,6 +9,7 @@ export default function UpdateDish() {
         user_email: "",
         dish_name: "",
         dish_description: "",
+        dish_type: '',
     })
     const [removeUserEmail, setRemoveUserEmail] = useState("");
 
@@ -28,6 +29,23 @@ export default function UpdateDish() {
         e.preventDefault();
         console.log(removeUserEmail);
     }
+
+    const enableUpdateSubmit = () => {
+        if (userSummary.user_email && userSummary.dish_name && userSummary.dish_description && userSummary.dish_type) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const enableRemoveSubmit = () => {
+        if (removeUserEmail) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     return (
         <section className="flex-1 px-4 bg-backgroundYellow">
             <div className="lg:w-1/2 lg:mx-auto">
@@ -40,13 +58,13 @@ export default function UpdateDish() {
                     <UserInput getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
                     <UserInput getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
                     <DishTypeSelection section="update dish" getValue={(e) => handleChange(e)} />
-                    <button onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2">Submit</button>
+                    <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
                 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2 divide-y">Remove Your Dish from the Menu</p> 
                 <div>
                     <UserInput getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
-                    <button onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2">Submit</button>
+                    <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
             </div>
         </section>
