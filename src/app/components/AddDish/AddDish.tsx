@@ -37,7 +37,7 @@ export default function AddDish() {
                     <UserInput getValue={(e) => handleChange(e)} inputName="user_email" content="Email Address" description="Only seen by the host to identify the chef." />
                     <UserInput getValue={(e) => handleChange(e)} inputName="dish_name" content="Name of the Dish" description />
                     <UserInput getValue={(e) => handleChange(e)} inputName="dish_description" content="Dish’s Description" description />
-                    <DishTypeSelection getValue={(e) => handleChange(e)}/>
+                    <DishTypeSelection section="add dish" getValue={(e) => handleChange(e)}/>
                     <button onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2">Submit</button>
                 </form>            
             </div>
