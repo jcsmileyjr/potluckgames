@@ -1,4 +1,5 @@
 "use client"
+import Swal from 'sweetalert2';
 import { useState } from "react";
 import { UserSummary } from "../Types";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
@@ -25,6 +26,15 @@ export default function AddDish() {
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(userSummary);
+        Swal.fire(`Thank you ${userSummary.user_name}. I can not wait to eat some ${userSummary.dish_name}`, '', 'success');
+    }
+
+    const enableSubmit = () => {
+        if (userSummary.user_name && userSummary.user_email && userSummary.dish_name && userSummary.dish_description && userSummary.dish_type) {
+            return true
+        } else {
+            return false
+        }
     }
 
     return (
@@ -38,7 +48,7 @@ export default function AddDish() {
                     <UserInput getValue={(e) => handleChange(e)} inputName="dish_name" content="Name of the Dish" description />
                     <UserInput getValue={(e) => handleChange(e)} inputName="dish_description" content="Dish’s Description" description />
                     <DishTypeSelection section="add dish" getValue={(e) => handleChange(e)}/>
-                    <button onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2">Submit</button>
+                    <button disabled={!enableSubmit()} onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </form>            
             </div>
         </section>
