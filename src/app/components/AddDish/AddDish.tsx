@@ -1,5 +1,6 @@
 "use client"
 import Swal from 'sweetalert2';
+import { addAttendee } from '@/app/actions/addAttendee';
 import { useState } from "react";
 import { UserSummary } from "../Types";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
@@ -26,6 +27,7 @@ export default function AddDish() {
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(userSummary);
+        addAttendee({ attendee: userSummary });
         Swal.fire(`Thank you ${userSummary.user_name}. I can not wait to eat some ${userSummary.dish_name}`, '', 'success');
     }
 
