@@ -1,4 +1,5 @@
 "use client"
+import Swal from 'sweetalert2';
 import { useState } from "react";
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
@@ -23,11 +24,13 @@ export default function UpdateDish() {
     const handleUpdateSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(userSummary);
+        Swal.fire(`Thank you. The list is now updated as you bringing ${userSummary.dish_name}`, '', 'success');
     }
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(removeUserEmail);
+        Swal.fire(`Thank you. Your dish is no no longer on the list.`, '', 'success');
     }
 
     const enableUpdateSubmit = () => {
