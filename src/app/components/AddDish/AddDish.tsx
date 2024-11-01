@@ -24,11 +24,16 @@ export default function AddDish() {
         }));
     }
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log(userSummary);
-        addAttendee({ attendee: userSummary });
-        Swal.fire(`Thank you ${userSummary.user_name}. I can not wait to eat some ${userSummary.dish_name}`, '', 'success');
+        const success = await addAttendee({ attendee: userSummary });
+        if (success) {
+            Swal.fire(`Thank you ${userSummary.user_name}. I can not wait to eat some ${userSummary.dish_name}`, '', 'success');    
+        } else {
+            Swal.fire(`Sorry ${userSummary.user_name}. There was a problem adding ${userSummary.dish_name}`, '', 'error');
+        }
+
     }
 
     const enableSubmit = () => {

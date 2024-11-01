@@ -13,10 +13,8 @@ export async function addAttendee({attendee}: {attendee: UserSummary}) {
     .select();
 
     if (error) {
-        console.log("error", error);
         return false;
     } else {
-        console.log("data", data);
         return true;
     }
 }
