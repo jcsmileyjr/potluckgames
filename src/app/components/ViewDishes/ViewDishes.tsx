@@ -31,7 +31,7 @@ export default function ViewDishes() {
             setUserSummaries(data as UserSummary[]);
         });
     }, []);
-    // getFood();
+    
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
             <div className="lg:w-1/2 lg:mx-auto">
