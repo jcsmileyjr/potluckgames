@@ -32,7 +32,7 @@ export default function UpdateDish() {
         <section className="flex-1 px-4 bg-backgroundYellow">
             <div className="lg:w-1/2 lg:mx-auto">
                 <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">Potluck Flexibility and Understanding</h2>
-                <p className="text-blackaccent1"> Oh, honey, we completely understand if you need to switch up what you're bringing—or if plans change and you can't make it. </p>
+                <p className="text-blackaccent1"> Oh, honey, we completely understand if you need to switch up what you&apos;re bringing—or if plans change and you can&apos;t make it. </p>
 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2">Change the Dish you are Bringing</p>
                 <div className="pb-4 border-b border-primaryBrown border-solid">
