@@ -4,7 +4,7 @@ export default function UserInput({inputName, content, description, getValue}: R
     return (
         <div className="mb-4">
             <label htmlFor={inputName} className="block text-base font-bold text-primaryBrown"><span className="text-red align-text-top">*</span>{content}</label>
-            <input name={inputName} onChange={(e) => getValue(e)} id={inputName} type="text" className="w-full my-1 p-2 border border-black rounded-md text-black" />
+            <input name={inputName} onChange={(e) => getValue(e)} id={inputName} type={inputName === 'user_email' ? 'email' : 'text'} className="w-full my-1 p-2 border border-black rounded-md text-black" />
             {description !== true &&
                 <p className="text-blackaccent2 text-sm">{description} </p>
             }
