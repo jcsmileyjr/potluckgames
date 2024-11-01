@@ -14,6 +14,7 @@ const config: Config = {
       'backgroundSunsetOrange' : '#e09f3e',
       'white' : '#FFFFFF',
       'black' : '#000000',
+      'red' : '#FF0000',
       'blackaccent1' : '#1e1e1e',
       'blackaccent2' : '#4a4a4a',
       'blackaccent3' : '#2c2c2c', 
