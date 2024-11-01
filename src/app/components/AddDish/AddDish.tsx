@@ -3,11 +3,12 @@ import Swal from 'sweetalert2';
 import { addAttendee } from '@/app/actions/addAttendee';
 import { useState } from "react";
 import { UserSummary } from "../Types";
+import { customAlphabet } from 'nanoid';
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
 import UserInput from "../UserInput/UserInput";
 
 export default function AddDish() {
-
+    const nanoid = customAlphabet('1234567890', 16); // Generate a 16-digit numeric ID
     const [userSummary, setUserSummary] = useState<UserSummary>({
         id: 0,
         user_name: '',
@@ -26,10 +27,12 @@ export default function AddDish() {
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(userSummary);
+        
+        userSummary.id = Number(nanoid());
         const success = await addAttendee({ attendee: userSummary });
+        
         if (success) {
-            Swal.fire(`Thank you ${userSummary.user_name}. I can not wait to eat some ${userSummary.dish_name}`, '', 'success');    
+            Swal.fire(`Thank you ${userSummary.user_name}. My mouth is watering to eat some ${userSummary.dish_name}`, '', 'success');    
         } else {
             Swal.fire(`Sorry ${userSummary.user_name}. There was a problem adding ${userSummary.dish_name}`, '', 'error');
         }

@@ -7,12 +7,11 @@ export async function getFood() {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const response = await supabase.from('attendee').select('*');
-    console.log("response", response);
+ 
     if (response.statusText !== 'OK') {
         return false;
     } else {
         const data = await response.data
-        console.log(data);
         return data;        
     }
 }

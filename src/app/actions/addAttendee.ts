@@ -6,7 +6,6 @@ export async function addAttendee({attendee}: {attendee: UserSummary}) {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    
     const { data, error } = await supabase
     .from('attendee')
     .insert([attendee])
