@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Header from "./layout/Header/Header";
 import AddDish from "./components/AddDish/AddDish";
 import ViewDishes from "./components/ViewDishes/ViewDishes";
