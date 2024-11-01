@@ -1,9 +1,9 @@
 
 export interface UserSummary {
-    userID: number;
-    userName: string;
-    userEmail: string;
-    dishType: string;
-    dishName: string;
-    dishdescription: string;
+    id: number;
+    user_name: string;
+    user_email: string;
+    dish_type: string;
+    dish_name: string;
+    dish_description: string;
 }
