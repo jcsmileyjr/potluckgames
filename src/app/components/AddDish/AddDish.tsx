@@ -37,6 +37,16 @@ export default function AddDish() {
             Swal.fire(`Sorry ${userSummary.user_name}. There was a problem adding ${userSummary.dish_name}`, '', 'error');
         }
 
+        // Clear the form
+        setUserSummary({
+            id: 0,
+            user_name: '',
+            user_email: '',
+            dish_type: '',
+            dish_name: '',
+            dish_description: '',
+        });
+
     }
 
     const enableSubmit = () => {
