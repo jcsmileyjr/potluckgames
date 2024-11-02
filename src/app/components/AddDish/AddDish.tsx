@@ -30,7 +30,7 @@ export default function AddDish() {
         
         userSummary.id = Number(nanoid());
         const success = await addAttendee({ attendee: userSummary });
-        console.log(success);
+
         if (success) {
             Swal.fire(`Thank you ${userSummary.user_name}. My mouth is watering to eat some ${userSummary.dish_name}`, '', 'success');    
         } else {
@@ -63,11 +63,11 @@ export default function AddDish() {
                 <h2 className="text-primaryBrown font-bold text-left text-2xl pt-4">What&apos;cha Bringing</h2>
                 <p className="text-blackaccent1">Well, y&apos;all, I&apos;m mighty curious—what kinda dish are you bringing&apos; to the potluck?</p>
                 <form className="my-4">
-                    <UserInput getValue={(e) => handleChange(e)} inputName="user_name" content="Attendee Name" description="Seen by other attendees."/>
-                    <UserInput getValue={(e) => handleChange(e)} inputName="user_email" content="Email Address" description="Only seen by the host to identify the chef." />
-                    <UserInput getValue={(e) => handleChange(e)} inputName="dish_name" content="Name of the Dish" description />
-                    <UserInput getValue={(e) => handleChange(e)} inputName="dish_description" content="Dish’s Description" description />
-                    <DishTypeSelection section="add dish" getValue={(e) => handleChange(e)}/>
+                    <UserInput value={userSummary.user_name} getValue={(e) => handleChange(e)} inputName="user_name" content="Attendee Name" description="Seen by other attendees."/>
+                    <UserInput value={userSummary.user_email} getValue={(e) => handleChange(e)} inputName="user_email" content="Email Address" description="Only seen by the host to identify the chef." />
+                    <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)} inputName="dish_name" content="Name of the Dish" description />
+                    <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)} inputName="dish_description" content="Dish’s Description" description />
+                    <DishTypeSelection section="add dish" value={userSummary.dish_type} getValue={(e) => handleChange(e)}/>
                     <button disabled={!enableSubmit()} onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </form>            
             </div>
