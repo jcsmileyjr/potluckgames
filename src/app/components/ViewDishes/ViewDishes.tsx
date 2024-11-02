@@ -5,14 +5,11 @@ import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
 import supabase from "@/app/lib/supabase";
 
-export default function ViewDishes() {
+export default function ViewDishes({ data }: { data: UserSummary[] }) {
     const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
 
     useEffect(() => {
-        getFood().then((data) => {
-            if (!data) return;
-            setUserSummaries(data as UserSummary[]);
-        });
+        setUserSummaries(data as UserSummary[]);
     }, []);
 
     useEffect(() => {
