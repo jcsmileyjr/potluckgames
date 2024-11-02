@@ -1,17 +1,19 @@
 'use server'
 import { createClient } from '@supabase/supabase-js';
- 
-export async function getFood() {
+import { UserSummary } from '../../app/components/Types';
+export async function addAttendee({attendee}: {attendee: UserSummary}) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const response = await supabase.from('attendee').select('*');
- 
-    if (response.statusText !== 'OK') {
+    const { data, error } = await supabase
+    .from('attendee')
+    .insert([attendee])
+    .select();
+
+    if (error) {
         return false;
     } else {
-        const data = await response.data
-        return data;        
+        return true;
     }
 }

@@ -3,35 +3,36 @@ import { useState, useEffect } from "react";
 import { getFood } from "@/app/actions/getFood";
 import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
-const UserSummaries: UserSummary[] = [
-    {
-        id: 1,
-        user_name: "John Doe",
-        user_email: "8VHs8@example.com",
-        dish_type: "Meat",
-        dish_name: "Turkey N Dressing",
-        dish_description: "Slow cooked rotisserie  turkey with buttery, savory, melt-in-your-mouth stuffing"
-    },
-    {
-        id: 2,
-        user_name: "Jane Doe",
-        user_email: "8VHs8@example.com",
-        dish_type: "Bread",
-        dish_name: "Butter rolls",
-        dish_description: "This is a description of the dish"
-    }
-]
+import supabase from "@/app/lib/supabase";
 
-export default function ViewDishes() {
+export default function ViewDishes({ data }: { data: UserSummary[] }) {
     const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
 
     useEffect(() => {
-        getFood().then((data) => {
-            if (!data) return;
-            setUserSummaries(data as UserSummary[]);
-        });
+        setUserSummaries(data as UserSummary[]);
     }, []);
-    // getFood();
+
+    useEffect(() => {
+        const channel = supabase
+        .channel('schema-db-changes')
+        .on(
+            'postgres_changes',
+            {
+            event: '*',
+            schema: 'public',
+            table: 'attendee',
+            },
+            (payload) => {
+                setUserSummaries([...UserSummaries, payload.new as UserSummary]);
+            }
+        )
+        .subscribe()
+
+        return () => {
+            supabase.removeChannel(channel)
+        }
+    }, [supabase]);
+    
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
             <div className="lg:w-1/2 lg:mx-auto">
@@ -40,6 +41,7 @@ export default function ViewDishes() {
                 
                 <div className="flex flex-col gap-4 mt-2">
                     {
+                        UserSummaries.length == 0 ? <p className="text-blackaccent1">No attendees yet</p> :
                         UserSummaries.map((userSummary) => {
                             return <FoodToggle key={userSummary.id} details={userSummary}/>
                         })
