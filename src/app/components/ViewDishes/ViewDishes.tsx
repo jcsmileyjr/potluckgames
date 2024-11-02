@@ -1,16 +1,11 @@
 'use client'
 import { useState, useEffect } from "react";
 import { getFood } from "@/app/actions/getFood";
-import { getRealTimeAttendence } from "@/app/actions/getRealTimeAttendence";
 import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
-import { createClient } from '@supabase/supabase-js';
+import supabase from "@/app/lib/supabase";
 
 export default function ViewDishes() {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
 
     useEffect(() => {
