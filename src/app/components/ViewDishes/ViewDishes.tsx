@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from "react";
-import { getFood } from "@/app/actions/getFood";
 import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
 import supabase from "@/app/lib/supabase";
