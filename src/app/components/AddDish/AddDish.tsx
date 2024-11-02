@@ -30,7 +30,7 @@ export default function AddDish() {
         
         userSummary.id = Number(nanoid());
         const success = await addAttendee({ attendee: userSummary });
-        console.log(success);
+
         if (success) {
             Swal.fire(`Thank you ${userSummary.user_name}. My mouth is watering to eat some ${userSummary.dish_name}`, '', 'success');    
         } else {
