@@ -57,16 +57,16 @@ export default function UpdateDish() {
 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2">Change the Dish you are Bringing</p>
                 <div className="pb-4 border-b border-primaryBrown border-solid">
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="user_email" content="Email" description />
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
-                    <DishTypeSelection section="update dish" getValue={(e) => handleChange(e)} />
+                    <UserInput value={userSummary.user_email} getValue={(e) => handleChange(e)}  inputName="user_email" content="Email" description />
+                    <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
+                    <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
+                    <DishTypeSelection value={userSummary.dish_type} section="update dish" getValue={(e) => handleChange(e)} />
                     <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
                 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2 divide-y">Remove Your Dish from the Menu</p> 
                 <div>
-                    <UserInput getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
+                    <UserInput value={removeUserEmail} getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
                     <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
             </div>
