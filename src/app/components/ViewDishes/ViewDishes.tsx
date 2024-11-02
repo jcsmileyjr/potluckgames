@@ -5,11 +5,7 @@ import { UserSummary } from "../Types";
 import supabase from "@/app/lib/supabase";
 
 export default function ViewDishes({ data }: { data: UserSummary[] }) {
-    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
-
-    useEffect(() => {
-        setUserSummaries(data as UserSummary[]);
-    }, []);
+    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>(data);
 
     useEffect(() => {
         const channel = supabase
@@ -30,7 +26,7 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
         return () => {
             supabase.removeChannel(channel)
         }
-    }, [supabase]);
+    }, [UserSummaries]);
     
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
