@@ -18,7 +18,14 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
             table: 'attendee',
             },
             (payload) => {
-                setUserSummaries([...UserSummaries, payload.new as UserSummary]);
+                const newAttendee = payload.new as UserSummary;
+                const ifExists = UserSummaries.find((userSummary) => userSummary.id == newAttendee.id);
+                if(ifExists !== undefined) {
+                    const index = UserSummaries.indexOf(ifExists);
+                    setUserSummaries((prevState) => [...prevState.slice(0, index), newAttendee, ...prevState.slice(index + 1)]);
+                } else {
+                    setUserSummaries((prevState) => [...prevState, newAttendee]);
+                }
             }
         )
         .subscribe()
