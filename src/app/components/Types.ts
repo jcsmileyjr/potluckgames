@@ -7,3 +7,10 @@ export interface UserSummary {
     dish_name: string;
     dish_description: string;
 }
+
+export interface PartialUserSummary {
+    user_email: string,
+    dish_name: string,
+    dish_description: string,
+    dish_type: string
+}

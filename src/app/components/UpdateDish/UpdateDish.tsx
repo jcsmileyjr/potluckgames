@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { useState } from "react";
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
+import { updateAttendee } from "@/app/actions/updateAttendee";
+import { PartialUserSummary } from '../Types';
 
 export default function UpdateDish() {
 
@@ -23,8 +25,22 @@ export default function UpdateDish() {
 
     const handleUpdateSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(userSummary);
+
+        let data: PartialUserSummary = {
+            user_email: userSummary.user_email,
+            dish_name: userSummary.dish_name,
+            dish_description: userSummary.dish_description,
+            dish_type: userSummary.dish_type
+        }
+        updateAttendee(data);
         Swal.fire(`Thank you. The list is now updated as you bringing ${userSummary.dish_name}`, '', 'success');
+        
+        setUserSummary({
+            user_email: "",
+            dish_name: "",
+            dish_description: "",
+            dish_type: '',
+        })
     }
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,16 +73,16 @@ export default function UpdateDish() {
 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2">Change the Dish you are Bringing</p>
                 <div className="pb-4 border-b border-primaryBrown border-solid">
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="user_email" content="Email" description />
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
-                    <UserInput getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
-                    <DishTypeSelection section="update dish" getValue={(e) => handleChange(e)} />
+                    <UserInput value={userSummary.user_email} getValue={(e) => handleChange(e)}  inputName="user_email" content="Email" description />
+                    <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
+                    <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
+                    <DishTypeSelection value={userSummary.dish_type} section="update dish" getValue={(e) => handleChange(e)} />
                     <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
                 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2 divide-y">Remove Your Dish from the Menu</p> 
                 <div>
-                    <UserInput getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
+                    <UserInput value={removeUserEmail} getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
                     <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
                 </div>
             </div>
