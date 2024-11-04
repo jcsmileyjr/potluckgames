@@ -34,6 +34,13 @@ export default function UpdateDish() {
         }
         updateAttendee(data);
         Swal.fire(`Thank you. The list is now updated as you bringing ${userSummary.dish_name}`, '', 'success');
+        
+        setUserSummary({
+            user_email: "",
+            dish_name: "",
+            dish_description: "",
+            dish_type: '',
+        })
     }
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
