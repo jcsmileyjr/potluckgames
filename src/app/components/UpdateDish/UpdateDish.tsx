@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { useState } from "react";
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
+import { updateAttendee } from "@/app/actions/updateAttendee";
+import { PartialUserSummary } from '../Types';
 
 export default function UpdateDish() {
 
@@ -23,7 +25,14 @@ export default function UpdateDish() {
 
     const handleUpdateSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(userSummary);
+
+        let data: PartialUserSummary = {
+            user_email: userSummary.user_email,
+            dish_name: userSummary.dish_name,
+            dish_description: userSummary.dish_description,
+            dish_type: userSummary.dish_type
+        }
+        updateAttendee(data);
         Swal.fire(`Thank you. The list is now updated as you bringing ${userSummary.dish_name}`, '', 'success');
     }
 
