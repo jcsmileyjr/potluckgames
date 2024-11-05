@@ -1,13 +1,8 @@
 'use server'
-import { createClient } from '@supabase/supabase-js';
- 
+import supabase from "@/app/lib/supabase";
 export async function getFood() {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     const response = await supabase.from('attendee').select('*');
- 
+
     if (response.statusText !== 'OK') {
         return false;
     } else {
