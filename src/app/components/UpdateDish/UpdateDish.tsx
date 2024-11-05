@@ -46,8 +46,8 @@ export default function UpdateDish() {
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(removeUserEmail);
         removeAttendee(removeUserEmail);
+        setRemoveUserEmail("");
         Swal.fire(`Thank you. Your dish is no no longer on the list.`, '', 'success');
     }
 
