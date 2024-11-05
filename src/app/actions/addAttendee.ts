@@ -1,11 +1,8 @@
 'use server'
 import { createClient } from '@supabase/supabase-js';
 import { UserSummary } from '../../app/components/Types';
+import supabase from "@/app/lib/supabase";
 export async function addAttendee({attendee}: {attendee: UserSummary}) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
     const { error } = await supabase
     .from('attendee')
     .insert([attendee])
