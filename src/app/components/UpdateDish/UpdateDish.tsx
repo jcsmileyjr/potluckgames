@@ -27,7 +27,7 @@ export default function UpdateDish() {
     const handleUpdateSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        let data: PartialUserSummary = {
+        const data: PartialUserSummary = {
             user_email: userSummary.user_email,
             dish_name: userSummary.dish_name,
             dish_description: userSummary.dish_description,
