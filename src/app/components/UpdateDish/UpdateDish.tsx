@@ -4,6 +4,7 @@ import { useState } from "react";
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
 import { updateAttendee } from "@/app/actions/updateAttendee";
+import { removeAttendee } from '@/app/actions/removeAttendee';
 import { PartialUserSummary } from '../Types';
 
 export default function UpdateDish() {
@@ -45,7 +46,8 @@ export default function UpdateDish() {
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log(removeUserEmail);
+        removeAttendee(removeUserEmail);
+        setRemoveUserEmail("");
         Swal.fire(`Thank you. Your dish is no no longer on the list.`, '', 'success');
     }
 

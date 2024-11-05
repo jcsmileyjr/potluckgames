@@ -19,12 +19,14 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
             },
             (payload) => {
                 const newAttendee = payload.new as UserSummary;
-                const ifExists = UserSummaries.find((userSummary) => userSummary.id == newAttendee.id);
-                if(ifExists !== undefined) {
-                    const index = UserSummaries.indexOf(ifExists);
-                    setUserSummaries((prevState) => [...prevState.slice(0, index), newAttendee, ...prevState.slice(index + 1)]);
-                } else {
+                if (payload.eventType === "INSERT") {
                     setUserSummaries((prevState) => [...prevState, newAttendee]);
+                } else if (payload.eventType === "DELETE") {
+                    const index = findIndex(payload.old.id);
+                    setUserSummaries((prevState) => [...prevState.slice(0, index), ...prevState.slice(index + 1)]);
+                } else {
+                    const index = findIndex(payload.old.id);
+                    setUserSummaries((prevState) => [...prevState.slice(0, index), newAttendee, ...prevState.slice(index + 1)]);
                 }
             }
         )
@@ -34,6 +36,10 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
             supabase.removeChannel(channel)
         }
     }, [UserSummaries]);
+
+    const findIndex = (id: number) => {
+        return UserSummaries.findIndex((userSummary) => userSummary.id == id);
+    }
     
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
