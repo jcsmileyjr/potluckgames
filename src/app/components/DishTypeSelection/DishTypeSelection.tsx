@@ -10,7 +10,7 @@ const Selection = ({type, section, getValue}: {type: string, section:string, get
 }
 
 
-export default function DishTypeSelection({section, value, getValue}: Readonly<{section: string, value: string, getValue: (e: React.ChangeEvent<HTMLInputElement>) => void}>) {
+export default function DishTypeSelection({section, getValue}: Readonly<{section: string, value: string, getValue: (e: React.ChangeEvent<HTMLInputElement>) => void}>) {
     return (
         <div className="">
             <p className="text-primaryBrown font-bold">Dish Type</p>
