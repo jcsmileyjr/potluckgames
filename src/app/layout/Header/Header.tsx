@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 export default function Header() {
     return (
         <header className="relative px-4 pb-8" >
@@ -26,14 +26,22 @@ export default function Header() {
                     </>
                   </div>
                   <div className="mt-4 flex flex-col gap-3 text-black">
-                    <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-md">Meetup.com Registration</button>
+                  <Link legacyBehavior href="https://www.meetup.com/memphis-technology-user-groups/events/304367440" >                  
+                    <a className="text-center bg-accentRed text-white py-2 px-4 rounded-md" target="_blank" rel="noopener noreferrer">
+                    Meetup.com Registration
+                    </a>
+                  </Link>
                   </div>
                 </div>
                 <div className="w-2/3 2xl:w-1/2 inset-0 aspect-square bg-no-repeat  bg-cover bg-center bg-[url('/primaryimage.jpeg')]"></div>
             </div>
           </div>
           <div className="sm:hidden mt-4 flex flex-col gap-3 text-black">
-              <button type="button" className="bg-accentRed text-white py-2 px-4 rounded-md">Meetup.com Registration</button>
+              <Link legacyBehavior href="https://www.meetup.com/memphis-technology-user-groups/events/304367440" className="bg-accentRed text-white py-2 px-4 rounded-md">
+              <a className="text-center bg-accentRed text-white py-2 px-4 rounded-md" target="_blank" rel="noopener noreferrer">
+                Meetup.com Registration
+              </a>
+              </Link>
           </div>
         </header>
     );
