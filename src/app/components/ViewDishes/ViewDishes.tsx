@@ -8,6 +8,10 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
     const [UserSummaries, setUserSummaries] = useState<UserSummary[]>(data);
 
     useEffect(() => {
+        const findIndex = (id: number) => {
+            return UserSummaries.findIndex((userSummary) => userSummary.id == id);
+        }
+        
         const channel = supabase
         .channel('schema-db-changes')
         .on(
@@ -36,10 +40,6 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
             supabase.removeChannel(channel)
         }
     }, [UserSummaries]);
-
-    const findIndex = (id: number) => {
-        return UserSummaries.findIndex((userSummary) => userSummary.id == id);
-    }
     
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
