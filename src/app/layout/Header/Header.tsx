@@ -1,11 +1,11 @@
 import Link from "next/link";
 export default function Header() {
     return (
-        <header className="relative px-4 pb-8" >
+        <header className="relative px-4 pb-8 pt-8 sm:pt-4" >
           {/* Mobile View */}
           <div className="sm:hidden h-80 w-full absolute inset-0 opacity-50 aspect-square bg-no-repeat  bg-cover bg-center bg-[url('/primaryimage.jpeg')] "></div>
-          <div className="sm:hidden h-80 relative z-10 flex flex-col">
-            <h1 className="text-accentRed font-bold text-center text-4xl py-2 mt-8">Potluck & Games</h1>
+          <div className="sm:hidden h-80 relative z-10 flex-col">
+            <h1 className="text-accentRed font-bold text-center text-4xl py-2">Potluck & Games</h1>
           </div>
           <div className="sm:hidden flex flex-col gap-1 text-black  mt-2">
               <p className="text-xl">End of the year Celebration Meal with fellow Tech Professionals</p>
@@ -15,7 +15,10 @@ export default function Header() {
 
           {/* Desktop View */}
           <div className="hidden sm:flex sm:flex-col sm:gap-4">
-            <h1 className="text-accentRed font-bold text-center text-4xl py-2 mt-8">Potluck & Games</h1>
+            <div className="flex flex-row items-center">
+              <h1 className="flex-1 text-accentRed font-bold text-center text-4xl py-2">Potluck & Games</h1>
+              <p className="underline text-accentRed">Update/Remove food item</p>
+            </div>
             <div className="sm:flex sm:flex-row sm:gap-4 lg:w-1/2 mx-auto">
                 <div className="flex flex-col gap-1 justify-between">
                   <div>
