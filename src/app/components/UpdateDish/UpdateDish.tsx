@@ -1,6 +1,7 @@
 "use client"
 import Swal from 'sweetalert2';
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
 import { updateAttendee } from "@/app/actions/updateAttendee";
@@ -8,7 +9,7 @@ import { removeAttendee } from '@/app/actions/removeAttendee';
 import { PartialUserSummary } from '../Types';
 
 export default function UpdateDish() {
-
+    const router = useRouter() //  Use to relocate user to another page
     const [userSummary, setUserSummary] = useState({
         user_email: "",
         dish_name: "",
@@ -42,6 +43,7 @@ export default function UpdateDish() {
             dish_description: "",
             dish_type: '',
         })
+        router.push('/')
     }
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,6 +51,7 @@ export default function UpdateDish() {
         removeAttendee(removeUserEmail);
         setRemoveUserEmail("");
         Swal.fire(`Thank you. Your dish is no no longer on the list.`, '', 'success');
+        router.push('/')
     }
 
     const enableUpdateSubmit = () => {
@@ -79,13 +82,13 @@ export default function UpdateDish() {
                     <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
                     <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
                     <DishTypeSelection value={userSummary.dish_type} section="update dish" getValue={(e) => handleChange(e)} />
-                    <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
+                    <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full  disabled:opacity-75">Submit</button>
                 </div>
                 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2 divide-y">Remove Your Dish from the Menu</p> 
                 <div>
                     <UserInput value={removeUserEmail} getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
-                    <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
+                    <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full  disabled:opacity-75">Submit</button>
                 </div>
             </div>
         </section>

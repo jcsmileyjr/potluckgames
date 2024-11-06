@@ -1,11 +1,22 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
+import Link from "next/link";
 import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
 import supabase from "@/app/lib/supabase";
+import { getFood } from "@/app/actions/getFood";
 
-export default function ViewDishes({ data }: { data: UserSummary[] }) {
-    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>(data);
+export default function ViewDishes() {
+    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
+
+    useEffect(() => {
+        async function getAttenddees() {
+            const data: UserSummary[] = await getFood() as UserSummary[];
+            setUserSummaries(data);
+        }
+
+        getAttenddees();
+    }, [])
 
     useEffect(() => {
         const findIndex = (id: number) => {
@@ -42,8 +53,8 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
     }, [UserSummaries]);
     
     return (
-        <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80">
-            <div className="lg:w-1/2 lg:mx-auto">
+        <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80 flex flex-col sm:block">
+            <div className="lg:w-1/2 lg:mx-auto mb-8">
                 <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">We going Whole Hog tonight</h2>
                 <p className="text-blackaccent1"> I reckon we&apos;ll have ourselves a fine spread, so let&apos;s read what&apos;s on the menu!</p>
                 
@@ -55,8 +66,8 @@ export default function ViewDishes({ data }: { data: UserSummary[] }) {
                         })
                     }                
                 </div>
-
             </div>
+            <Link className="sm:hidden bg-accentRed text-white py-2 px-4 rounded-md w-full text-center" href="/UpdateAttendee" >Update/Remove food item</Link>
         </section>
     )
 }
