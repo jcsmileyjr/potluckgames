@@ -15,7 +15,6 @@ export default async function Home() {
         <ViewDishes data={data} />
         <UpdateDish />
       </main>
-
     </div>
   );
 }

@@ -79,13 +79,13 @@ export default function UpdateDish() {
                     <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)}  inputName="dish_name" content="Name of the Dish" description />
                     <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)}  inputName="dish_description" content="Dish’s Description" description  />
                     <DishTypeSelection value={userSummary.dish_type} section="update dish" getValue={(e) => handleChange(e)} />
-                    <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
+                    <button disabled={!enableUpdateSubmit()} onClick={(e) => handleUpdateSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full  disabled:opacity-75">Submit</button>
                 </div>
                 
                 <p className="text-xl font-bold text-primaryBrown mt-4 mt-2 divide-y">Remove Your Dish from the Menu</p> 
                 <div>
                     <UserInput value={removeUserEmail} getValue={(e) => setRemoveUserEmail(e.target.value)} inputName="email" content="Email" description />
-                    <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
+                    <button disabled={!enableRemoveSubmit()} onClick={(e) => handleRemoveSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md my-4 w-full  disabled:opacity-75">Submit</button>
                 </div>
             </div>
         </section>
