@@ -17,7 +17,7 @@ export default function Header() {
           <div className="hidden sm:flex sm:flex-col sm:gap-4">
             <div className="flex flex-row items-center">
               <h1 className="flex-1 text-accentRed font-bold text-center text-4xl py-2">Potluck & Games</h1>
-              <p className="underline text-accentRed">Update/Remove food item</p>
+              <Link className="underline text-accentRed" href="/UpdateAttendee" >Update/Remove food item</Link>
             </div>
             <div className="sm:flex sm:flex-row sm:gap-4 lg:w-1/2 mx-auto">
                 <div className="flex flex-col gap-1 justify-between">
