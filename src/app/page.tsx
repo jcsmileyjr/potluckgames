@@ -12,7 +12,7 @@ export default async function Home() {
       <Header />
       <main className="flex flex-col bg-white">
         <AddDish />
-        <ViewDishes data={data} />
+        <ViewDishes />
         <UpdateDish />
       </main>
     </div>

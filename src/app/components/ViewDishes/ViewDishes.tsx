@@ -1,11 +1,21 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import FoodToggle from "../FoodToggle/FoodToggle";
 import { UserSummary } from "../Types";
 import supabase from "@/app/lib/supabase";
+import { getFood } from "@/app/actions/getFood";
 
-export default function ViewDishes({ data }: { data: UserSummary[] }) {
-    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>(data);
+export default function ViewDishes() {
+    const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
+
+    useEffect(() => {
+        async function getAttenddees() {
+            const data: UserSummary[] = await getFood() as UserSummary[];
+            setUserSummaries(data);
+        }
+
+        getAttenddees();
+    }, [])
 
     useEffect(() => {
         const findIndex = (id: number) => {

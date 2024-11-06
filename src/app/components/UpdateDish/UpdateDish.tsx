@@ -1,6 +1,7 @@
 "use client"
 import Swal from 'sweetalert2';
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
 import UserInput from "../UserInput/UserInput";
 import DishTypeSelection from "../DishTypeSelection/DishTypeSelection";
 import { updateAttendee } from "@/app/actions/updateAttendee";
@@ -8,7 +9,7 @@ import { removeAttendee } from '@/app/actions/removeAttendee';
 import { PartialUserSummary } from '../Types';
 
 export default function UpdateDish() {
-
+    const router = useRouter() //  Use to relocate user to another page
     const [userSummary, setUserSummary] = useState({
         user_email: "",
         dish_name: "",
@@ -42,6 +43,7 @@ export default function UpdateDish() {
             dish_description: "",
             dish_type: '',
         })
+        router.push('/')
     }
 
     const handleRemoveSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,6 +51,7 @@ export default function UpdateDish() {
         removeAttendee(removeUserEmail);
         setRemoveUserEmail("");
         Swal.fire(`Thank you. Your dish is no no longer on the list.`, '', 'success');
+        router.push('/')
     }
 
     const enableUpdateSubmit = () => {
