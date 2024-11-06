@@ -68,7 +68,7 @@ export default function AddDish() {
                     <UserInput value={userSummary.dish_name} getValue={(e) => handleChange(e)} inputName="dish_name" content="Name of the Dish" description />
                     <UserInput value={userSummary.dish_description} getValue={(e) => handleChange(e)} inputName="dish_description" content="Dish’s Description" description />
                     <DishTypeSelection section="add dish" value={userSummary.dish_type} getValue={(e) => handleChange(e)}/>
-                    <button disabled={!enableSubmit()} onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full sm:w-1/2 disabled:opacity-75">Submit</button>
+                    <button disabled={!enableSubmit()} onClick={(e) => handleSubmit(e)} type="submit" className="bg-accentRed text-white py-2 px-4 rounded-md mt-4 w-full disabled:opacity-75">Submit</button>
                 </form>            
             </div>
         </section>
