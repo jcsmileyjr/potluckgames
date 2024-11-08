@@ -62,7 +62,7 @@ export default function ViewDishes() {
                 </div>
                 <p className="text-blackaccent1"> I reckon we&apos;ll have ourselves a fine spread, so let&apos;s read what&apos;s on the menu!</p>
                 
-                <div className={`flex flex-col gap-4 mt-2 ${openMenu ? 'block' : 'hidden'}`}>
+                <div className={`flex flex-col gap-4 mt-2 transition duration-500 ease-in-out ${openMenu ? 'opacity-100 ' : 'opacity-0'}`}>
                     {
                         UserSummaries.length == 0 ? <p className="text-blackaccent1">No attendees yet</p> :
                         UserSummaries.map((userSummary) => {
