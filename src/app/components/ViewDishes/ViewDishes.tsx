@@ -8,6 +8,7 @@ import { getFood } from "@/app/actions/getFood";
 
 export default function ViewDishes() {
     const [UserSummaries, setUserSummaries] = useState<UserSummary[]>([]);
+    const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
         async function getAttenddees() {
@@ -55,10 +56,13 @@ export default function ViewDishes() {
     return (
         <section className="flex-1 px-4 pb-8 bg-backgroundSunsetOrange lg:min-h-80 flex flex-col sm:block">
             <div className="lg:w-1/2 lg:mx-auto mb-8">
-                <h2 className="text-primaryBrown font-bold text-left text-2xl pt-2">We going Whole Hog tonight</h2>
+                <div onClick={() => setOpenMenu(!openMenu)} className="flex flex-row justify-between pt-2 text-primaryBrown font-bold text-left text-2xl cursor-pointer">
+                    <h2 className="">We going Whole Hog tonight</h2>
+                    <p className="underline ">Click to View Menu</p>
+                </div>
                 <p className="text-blackaccent1"> I reckon we&apos;ll have ourselves a fine spread, so let&apos;s read what&apos;s on the menu!</p>
                 
-                <div className="flex flex-col gap-4 mt-2">
+                <div className={`flex flex-col gap-4 mt-2 transition duration-500 ease-in-out ${openMenu ? 'opacity-100 ' : 'opacity-0'}`}>
                     {
                         UserSummaries.length == 0 ? <p className="text-blackaccent1">No attendees yet</p> :
                         UserSummaries.map((userSummary) => {
